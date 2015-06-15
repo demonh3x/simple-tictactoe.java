@@ -7,13 +7,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static tictactoe.LiteralBoard.*;
 
 public class GameTest {
+    PlayerStub x, o;
     DisplaySpy display;
     Game game;
 
     @Before
     public void setUp() {
+        x = new PlayerStub('x');
+        o = new PlayerStub('o');
         display = new DisplaySpy();
-        game = new Game(display);
+        game = new Game(display, new Turns(x, o));
     }
 
     @Test
@@ -33,7 +36,8 @@ public class GameTest {
 
     @Test
     public void displaysTheXPlayerInTheFirstSpace() {
-        game.placeMarkAt(0);
+        x.willPlaceMarkAt(0);
+        game.step();
         assertDisplayed(
                 "x--" +
                 "---" +
@@ -43,7 +47,8 @@ public class GameTest {
 
     @Test
     public void displaysTheXPlayerInTheSecondSpace() {
-        game.placeMarkAt(1);
+        x.willPlaceMarkAt(1);
+        game.step();
         assertDisplayed(
                 "-x-" +
                 "---" +
@@ -53,7 +58,8 @@ public class GameTest {
 
     @Test
     public void displaysTheXPlayerInTheFifthSpace() {
-        game.placeMarkAt(4);
+        x.willPlaceMarkAt(4);
+        game.step();
         assertDisplayed(
                 "---" +
                 "-x-" +
@@ -63,17 +69,15 @@ public class GameTest {
 
     @Test
     public void displaysTheOPlayerInTheSecondSpace() {
-        placingMarksAt(0, 1);
+        x.willPlaceMarkAt(0);
+        game.step();
+        o.willPlaceMarkAt(1);
+        game.step();
         assertDisplayed(
                 "xo-" +
                 "---" +
                 "---"
         );
-    }
-
-    private void placingMarksAt(int... spacesToPlaceMarks) {
-        for (Integer space : spacesToPlaceMarks)
-            game.placeMarkAt(space);
     }
 
     private void assertDisplayed(String expectedMarks) {
