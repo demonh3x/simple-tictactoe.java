@@ -8,11 +8,11 @@ public class Game {
     }
 
     public void start() {
-        display.updateBoard(board.marks());
+        display.updateBoard(board.placedMarks());
     }
 
     public void placeMarkAt(int space) {
-        board.placeMarkAt(space);
-        display.updateBoard(board.marks());
+        board.placeNextMarkAt(space);
+        display.updateBoard(board.placedMarks());
     }
 }

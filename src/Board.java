@@ -1,22 +1,30 @@
 class Board {
     private static final String NO_MARKS = "---------";
 
-    private String marks;
-    private String currentMark;
+    private String placedMarks;
+    private String nextMark;
 
     public Board() {
-        this.marks = NO_MARKS;
-        this.currentMark = "x";
+        this.placedMarks = NO_MARKS;
+        this.nextMark = "x";
     }
 
-    public void placeMarkAt(int space) {
-        String marksBeforeTheSpace = marks.substring(0, space);
-        String marksAfterTheSpace = marks.substring(space + 1);
-        marks = marksBeforeTheSpace + currentMark + marksAfterTheSpace;
-        currentMark = "o";
+    public String placedMarks() {
+        return placedMarks;
     }
 
-    public String marks() {
-        return marks;
+    public void placeNextMarkAt(int space) {
+        placeMarkAt(space);
+        advanceMark();
+    }
+
+    private void placeMarkAt(int space) {
+        String marksBeforeTheSpace = placedMarks.substring(0, space);
+        String marksAfterTheSpace = placedMarks.substring(space + 1);
+        placedMarks = marksBeforeTheSpace + nextMark + marksAfterTheSpace;
+    }
+
+    private void advanceMark() {
+        nextMark = "o";
     }
 }
