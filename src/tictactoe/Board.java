@@ -9,8 +9,8 @@ class Board {
         placedMarks = new char[9];
     }
 
-    public void placeMarkAt(char mark, int space) {
-        placedMarks[space] = mark;
+    public void placeMarkAtSpace(char mark, int atSpace) {
+        placedMarks[atSpace] = mark;
     }
 
     @Override

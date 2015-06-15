@@ -16,7 +16,7 @@ public class BoardTest {
     @Test
     public void aBoardWithOneMoveIsNotEqualToAnEmptyBoard() throws Exception {
         Board boardWithOneMoveMore = new Board();
-        boardWithOneMoveMore.placeMarkAt('x', 0);
+        boardWithOneMoveMore.placeMarkAtSpace('x', 0);
 
         Board emptyBoard = new Board();
 
@@ -28,8 +28,8 @@ public class BoardTest {
         Board boardA = new Board();
         Board boardB = new Board();
 
-        boardA.placeMarkAt('x', 0);
-        boardB.placeMarkAt('x', 0);
+        boardA.placeMarkAtSpace('x', 0);
+        boardB.placeMarkAtSpace('x', 0);
 
         assertThat(boardA).isEqualTo(boardB);
     }
