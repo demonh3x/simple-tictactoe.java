@@ -3,8 +3,12 @@ public class Game {
     private Board board;
 
     public Game(Display display) {
+        this(display, new Board());
+    }
+
+    public Game(Display display, Board board) {
         this.display = display;
-        this.board = new Board();
+        this.board = board;
     }
 
     public void start() {

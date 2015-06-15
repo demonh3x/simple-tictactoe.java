@@ -5,8 +5,12 @@ class Board {
     private String nextMark;
 
     public Board() {
-        this.placedMarks = NO_MARKS;
-        this.nextMark = "x";
+        this(NO_MARKS, "x");
+    }
+
+    public Board(String placedMarks, String nextMark) {
+        this.placedMarks = placedMarks;
+        this.nextMark = nextMark;
     }
 
     public String placedMarks() {

@@ -46,9 +46,8 @@ public class PlaceAMarkTest {
     @Test
     public void displaysTheOPlayerInTheSecondSpace() {
         DisplaySpy display = new DisplaySpy();
-        Game game = new Game(display);
+        Game game = new Game(display, new Board("x--------", "o"));
 
-        game.placeMarkAt(0);
         game.placeMarkAt(1);
 
         assertThat(display.board).isEqualTo(
