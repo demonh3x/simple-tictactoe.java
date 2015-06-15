@@ -1,3 +1,3 @@
 public interface Display {
-    void show(String board);
+    void updateBoard(String board);
 }

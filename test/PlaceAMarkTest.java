@@ -4,14 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class PlaceAMarkTest {
     @Test
-    public void showsTheXPlayerInTheFirstSpace() {
+    public void displaysTheXPlayerInTheFirstSpace() {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
         game.start();
         game.placeMark(0);
 
-        assertThat(display.shownBoard).isEqualTo(
+        assertThat(display.board).isEqualTo(
                 "x--" +
                 "---" +
                 "---"
@@ -19,14 +19,14 @@ public class PlaceAMarkTest {
     }
 
     @Test
-    public void showsTheXPlayerInTheSecondSpace() {
+    public void displaysTheXPlayerInTheSecondSpace() {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
         game.start();
         game.placeMark(1);
 
-        assertThat(display.shownBoard).isEqualTo(
+        assertThat(display.board).isEqualTo(
                 "-x-" +
                 "---" +
                 "---"
@@ -34,14 +34,14 @@ public class PlaceAMarkTest {
     }
 
     @Test
-    public void showsTheXPlayerInTheFifthSpace() {
+    public void displaysTheXPlayerInTheFifthSpace() {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
         game.start();
         game.placeMark(4);
 
-        assertThat(display.shownBoard).isEqualTo(
+        assertThat(display.board).isEqualTo(
                 "---" +
                 "-x-" +
                 "---"

@@ -9,20 +9,20 @@ public class StartGameTest {
             "---";
 
     @Test
-    public void showsAnEmptyBoard() {
+    public void displaysAnEmptyBoard() {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
         game.start();
 
-        assertThat(display.shownBoard).isEqualTo(EMPTY_BOARD);
+        assertThat(display.board).isEqualTo(EMPTY_BOARD);
     }
 
     @Test
-    public void doesNotShowAnythingBeforeStarting() {
+    public void doesNotDisplayTheBoardBeforeStarting() {
         DisplaySpy display = new DisplaySpy();
         new Game(display);
 
-        assertThat(display.hasShownSomething).isFalse();
+        assertThat(display.isDisplayingABoard).isFalse();
     }
 }

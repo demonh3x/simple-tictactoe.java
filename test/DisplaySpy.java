@@ -1,10 +1,10 @@
 class DisplaySpy implements Display {
-    public String shownBoard;
-    public boolean hasShownSomething = false;
+    public String board;
+    public boolean isDisplayingABoard = false;
 
     @Override
-    public void show(String board) {
-        this.shownBoard = board;
-        this.hasShownSomething = true;
+    public void updateBoard(String board) {
+        this.board = board;
+        this.isDisplayingABoard = true;
     }
 }
