@@ -1,9 +1,14 @@
 public class Game {
     private static final String EMPTY_BOARD = "---------";
-    private final Display display;
+
+    private Display display;
+    private String board;
+    private String mark;
 
     public Game(Display display) {
         this.display = display;
+        this.board = EMPTY_BOARD;
+        this.mark = "x";
     }
 
     public void start() {
@@ -11,14 +16,18 @@ public class Game {
     }
 
     public void placeMarkAt(int space) {
-        display.updateBoard(boardWithMarkXInsertedAt(space));
+        insertMarkAt(space);
+        advanceMark();
+        display.updateBoard(board);
     }
 
-    private String boardWithMarkXInsertedAt(int space) {
-        String board = EMPTY_BOARD;
+    private void insertMarkAt(int space) {
         String marksBeforeTheSpace = board.substring(0, space);
         String marksAfterTheSpace = board.substring(space + 1);
+        board = marksBeforeTheSpace + mark + marksAfterTheSpace;
+    }
 
-        return marksBeforeTheSpace + "x" + marksAfterTheSpace;
+    private void advanceMark() {
+        mark = "o";
     }
 }
