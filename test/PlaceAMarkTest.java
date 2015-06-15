@@ -34,12 +34,12 @@ public class PlaceAMarkTest {
     }
 
     private void assertDisplayedBoardAfterPlacingFirstMarkAt(
-            int atSpace, String expectedDisplayedBoard) {
+            int space, String expectedDisplayedBoard) {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
         game.start();
-        game.placeMark(atSpace);
+        game.placeMarkAt(space);
 
         assertThat(display.board).isEqualTo(expectedDisplayedBoard);
     }
