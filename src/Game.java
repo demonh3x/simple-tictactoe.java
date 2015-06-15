@@ -8,4 +8,10 @@ public class Game {
     public void start() {
         display.show("---------");
     }
+
+    public void placeMark(int inSpace) {
+        String board = "---------";
+        board = board.substring(0, inSpace) + "x" + board.substring(inSpace +1);
+        display.show(board);
+    }
 }
