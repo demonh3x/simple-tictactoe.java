@@ -38,7 +38,6 @@ public class PlaceAMarkTest {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
-        game.start();
         game.placeMarkAt(space);
 
         assertThat(display.board).isEqualTo(expectedDisplayedBoard);
@@ -49,7 +48,6 @@ public class PlaceAMarkTest {
         DisplaySpy display = new DisplaySpy();
         Game game = new Game(display);
 
-        game.start();
         game.placeMarkAt(0);
         game.placeMarkAt(1);
 
