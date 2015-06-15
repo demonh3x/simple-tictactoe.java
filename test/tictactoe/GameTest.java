@@ -46,28 +46,6 @@ public class GameTest {
     }
 
     @Test
-    public void displaysTheXPlayerInTheSecondSpace() {
-        x.willPlaceMarkAt(1);
-        game.step();
-        assertDisplayed(
-                "-x-" +
-                "---" +
-                "---"
-        );
-    }
-
-    @Test
-    public void displaysTheXPlayerInTheFifthSpace() {
-        x.willPlaceMarkAt(4);
-        game.step();
-        assertDisplayed(
-                "---" +
-                "-x-" +
-                "---"
-        );
-    }
-
-    @Test
     public void displaysTheOPlayerInTheSecondSpace() {
         x.willPlaceMarkAt(0);
         game.step();
