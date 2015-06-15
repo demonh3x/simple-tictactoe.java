@@ -9,9 +9,9 @@ public class Game {
         display.updateBoard("---------");
     }
 
-    public void placeMark(int inSpace) {
+    public void placeMark(int atSpace) {
         String board = "---------";
-        board = board.substring(0, inSpace) + "x" + board.substring(inSpace +1);
+        board = board.substring(0, atSpace) + "x" + board.substring(atSpace +1);
         display.updateBoard(board);
     }
 }
