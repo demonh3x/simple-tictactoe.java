@@ -16,7 +16,7 @@ public class GameTest {
         x = new PlayerStub('x');
         o = new PlayerStub('o');
         display = new DisplaySpy();
-        game = new Game(display, new Turns(x, o));
+        game = new Game(new Board(), display, new Turns(x, o));
     }
 
     @Test

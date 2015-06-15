@@ -1,14 +1,14 @@
 package tictactoe;
 
 public class Game {
+    private Board board;
     private Display display;
     private Turns turns;
-    private Board board;
 
-    public Game(Display display, Turns turns) {
+    public Game(Board board, Display display, Turns turns) {
+        this.board = board;
         this.display = display;
         this.turns = turns;
-        this.board = new Board();
     }
 
     public void start() {
