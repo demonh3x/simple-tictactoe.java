@@ -13,6 +13,14 @@ public class StartGameTest {
 
         game.start();
 
-        display.shouldBeShowing(EMPTY_BOARD);
+        display.shouldHaveShown(EMPTY_BOARD);
+    }
+
+    @Test
+    public void doesNotShowAnythingBeforeStarting() {
+        DisplayMock display = new DisplayMock();
+        new Game(display);
+
+        display.shouldNotHaveShownAnything();
     }
 }

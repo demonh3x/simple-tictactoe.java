@@ -1,14 +1,21 @@
+import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
 
 class DisplayMock implements Display {
-    private String showingBoard;
+    private String shownBoard;
+    private boolean hasShownSomething = false;
 
     @Override
     public void show(String board) {
-        this.showingBoard = board;
+        this.shownBoard = board;
+        this.hasShownSomething = true;
     }
 
-    public void shouldBeShowing(String expectedBoard) {
-        assertEquals(expectedBoard, showingBoard);
+    public void shouldHaveShown(String expectedBoard) {
+        assertEquals(expectedBoard, shownBoard);
+    }
+
+    public void shouldNotHaveShownAnything() {
+        assertFalse(hasShownSomething);
     }
 }
