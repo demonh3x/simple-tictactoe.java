@@ -15,7 +15,7 @@ public class Turn {
         this.currentTaker = currentTaker;
     }
 
-    public Player currentTaker() {
+    public Player taker() {
         return currentTaker;
     }
 

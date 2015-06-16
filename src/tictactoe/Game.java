@@ -31,7 +31,7 @@ public class Game {
     }
 
     private Player currentPlayer() {
-        return turn.currentTaker();
+        return turn.taker();
     }
 
     private void advanceTurn() {

@@ -18,19 +18,19 @@ public class TurnTest {
 
     @Test
     public void theXPlayerTakesTurnFirst() {
-        assertThat(turn.currentTaker()).isSameAs(x);
+        assertThat(turn.taker()).isSameAs(x);
     }
 
     @Test
     public void theOPlayerTakesTurnSecond() {
         turn = turn.next();
-        assertThat(turn.currentTaker()).isSameAs(o);
+        assertThat(turn.taker()).isSameAs(o);
     }
 
     @Test
     public void theXPlayerTakesTurnThird() {
         turn = turn.next();
         turn = turn.next();
-        assertThat(turn.currentTaker()).isSameAs(x);
+        assertThat(turn.taker()).isSameAs(x);
     }
 }
