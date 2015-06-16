@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tictactoe.LiteralBoard.*;
+import static tictactoe.BoardAssertions.*;
 import static tictactoe.Mark.*;
 
 public class GameTest {
@@ -29,7 +29,8 @@ public class GameTest {
     public void afterStartingDisplaysAnEmptyBoard() {
         game.start();
 
-        assertDisplayed(
+        assertBoardContainsMarks(
+                display.board,
                 "---" +
                 "---" +
                 "---"
@@ -42,7 +43,8 @@ public class GameTest {
 
         game.doTurn();
 
-        assertDisplayed(
+        assertBoardContainsMarks(
+                display.board,
                 "x--" +
                 "---" +
                 "---"
@@ -57,14 +59,12 @@ public class GameTest {
         game.doTurn();
         game.doTurn();
 
-        assertDisplayed(
+        assertBoardContainsMarks(
+                display.board,
                 "xo-" +
                 "---" +
                 "---"
         );
     }
 
-    private void assertDisplayed(String expectedMarks) {
-        assertThat(display.board).isEqualTo(createBoardWithMarks(expectedMarks));
-    }
 }
