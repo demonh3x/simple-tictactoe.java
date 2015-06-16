@@ -3,6 +3,7 @@ package tictactoe;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tictactoe.Mark.*;
 
 public class BoardTest {
     @Test
@@ -16,7 +17,7 @@ public class BoardTest {
     @Test
     public void aBoardWithOneMoveIsNotEqualToAnEmptyBoard() throws Exception {
         Board boardWithOneMoveMore = new Board();
-        boardWithOneMoveMore.placeMarkAtSpace('x', 0);
+        boardWithOneMoveMore.placeMarkAtSpace(X, 0);
 
         Board emptyBoard = new Board();
 
@@ -28,8 +29,8 @@ public class BoardTest {
         Board boardA = new Board();
         Board boardB = new Board();
 
-        boardA.placeMarkAtSpace('x', 0);
-        boardB.placeMarkAtSpace('x', 0);
+        boardA.placeMarkAtSpace(X, 0);
+        boardB.placeMarkAtSpace(X, 0);
 
         assertThat(boardA).isEqualTo(boardB);
     }

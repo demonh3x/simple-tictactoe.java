@@ -2,14 +2,15 @@ package tictactoe;
 
 import java.util.Arrays;
 
-class Board {
-    private char[] placedMarks;
+public class Board {
+    private static final int SPACES_AMOUNT = 9;
+    private Mark[] placedMarks;
 
     public Board() {
-        placedMarks = new char[9];
+        placedMarks = new Mark[SPACES_AMOUNT];
     }
 
-    public void placeMarkAtSpace(char mark, int atSpace) {
+    public void placeMarkAtSpace(Mark mark, int atSpace) {
         placedMarks[atSpace] = mark;
     }
 

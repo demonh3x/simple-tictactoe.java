@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class PlayerStub implements Player {
-    private char mark;
+    private Mark mark;
     private Queue<Integer> spacesToPlaceMarks;
 
-    public PlayerStub(char mark) {
+    public PlayerStub(Mark mark) {
         this.mark = mark;
         this.spacesToPlaceMarks = new LinkedList<>();
     }

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tictactoe.LiteralBoard.*;
+import static tictactoe.Mark.*;
 
 public class GameTest {
     PlayerStub x, o;
@@ -13,8 +14,8 @@ public class GameTest {
 
     @Before
     public void setUp() {
-        x = new PlayerStub('x');
-        o = new PlayerStub('o');
+        x = new PlayerStub(X);
+        o = new PlayerStub(O);
         display = new DisplaySpy();
         game = new Game(new Board(), display, new Turns(x, o));
     }
@@ -27,6 +28,7 @@ public class GameTest {
     @Test
     public void afterStartingDisplaysAnEmptyBoard() {
         game.start();
+
         assertDisplayed(
                 "---" +
                 "---" +
@@ -37,7 +39,9 @@ public class GameTest {
     @Test
     public void displaysTheXPlayerInTheFirstSpace() {
         x.willPlaceMarkAt(0);
+
         game.step();
+
         assertDisplayed(
                 "x--" +
                 "---" +
@@ -48,9 +52,11 @@ public class GameTest {
     @Test
     public void displaysTheOPlayerInTheSecondSpace() {
         x.willPlaceMarkAt(0);
-        game.step();
         o.willPlaceMarkAt(1);
+
         game.step();
+        game.step();
+
         assertDisplayed(
                 "xo-" +
                 "---" +

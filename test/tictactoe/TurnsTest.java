@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static tictactoe.Mark.*;
 
 public class TurnsTest {
     Player x, o;
@@ -11,8 +12,8 @@ public class TurnsTest {
 
     @Before
     public void setUp() {
-        x = new PlayerStub('x');
-        o = new PlayerStub('o');
+        x = new PlayerStub(X);
+        o = new PlayerStub(O);
         turns = new Turns(x, o);
     }
 

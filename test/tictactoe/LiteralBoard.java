@@ -1,5 +1,7 @@
 package tictactoe;
 
+import static tictactoe.Mark.*;
+
 public class LiteralBoard {
     public static final char EMPTY_SPACE = '-';
 
@@ -7,11 +9,22 @@ public class LiteralBoard {
         Board board = new Board();
 
         for (int space = 0; space < marks.length(); space++) {
-            char mark = marks.charAt(space);
-            if (mark != EMPTY_SPACE)
-                board.placeMarkAtSpace(mark, space);
+            char symbol = marks.charAt(space);
+            if (symbol != EMPTY_SPACE)
+                board.placeMarkAtSpace(markFrom(symbol), space);
         }
 
         return board;
+    }
+
+    public static Mark markFrom(char symbol) {
+        switch (symbol){
+            case 'x':
+                return X;
+            case 'o':
+                return O;
+            default:
+                throw new IllegalArgumentException(String.format("The symbol %s is not a mark!", symbol));
+        }
     }
 }
