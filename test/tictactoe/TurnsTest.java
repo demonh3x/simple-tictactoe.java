@@ -11,14 +11,8 @@ public class TurnsTest {
 
     @Before
     public void setUp() {
-        x = new Player() {
-            @Override
-            public void placeMark(Board board) {}
-        };
-        o = new Player() {
-            @Override
-            public void placeMark(Board board) {}
-        };
+        x = new PlayerStub('x');
+        o = new PlayerStub('o');
         turns = new Turns(x, o);
     }
 
