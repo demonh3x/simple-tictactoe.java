@@ -17,7 +17,7 @@ public class GameTest {
         x = new PlayerStub(X);
         o = new PlayerStub(O);
         display = new DisplaySpy();
-        game = new Game(Board.empty(), display, new ActivePlayer(x, o));
+        game = new Game(Board.empty(), display, Turn.firstOf(x, o));
     }
 
     @Test
@@ -66,5 +66,4 @@ public class GameTest {
                 "---"
         );
     }
-
 }
