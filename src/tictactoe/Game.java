@@ -2,12 +2,12 @@ package tictactoe;
 
 public class Game {
     private final Display display;
-    private Turn turn;
+    private Turn currentTurn;
     private final Board board;
 
     public Game(Display display, Turn initialTurn, Board initialBoard) {
         this.display = display;
-        this.turn = initialTurn;
+        this.currentTurn = initialTurn;
         this.board = initialBoard;
     }
 
@@ -31,10 +31,10 @@ public class Game {
     }
 
     private Player currentPlayer() {
-        return turn.taker();
+        return currentTurn.taker();
     }
 
     private void advanceTurn() {
-        turn = turn.next();
+        currentTurn = currentTurn.next();
     }
 }
