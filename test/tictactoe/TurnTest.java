@@ -7,30 +7,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class TurnTest {
     Player x, o;
-    Turn turn;
+    Turn firstTurn;
 
     @Before
     public void setUp() {
         x = new PlayerDummy();
         o = new PlayerDummy();
-        turn = Turn.firstOf(x, o);
+        firstTurn = Turn.firstOf(x, o);
     }
 
     @Test
-    public void theXPlayerTakesTheFirstTurn() {
-        assertThat(turn.taker()).isSameAs(x);
+    public void xTakesTheFirstTurn() {
+        assertThat(firstTurn.taker()).isSameAs(x);
     }
 
     @Test
-    public void theOPlayerTakesTheSecondTurn() {
-        turn = turn.next();
-        assertThat(turn.taker()).isSameAs(o);
+    public void oTakesTheSecondTurn() {
+        Turn secondTurn = firstTurn.next();
+        assertThat(secondTurn.taker()).isSameAs(o);
     }
 
     @Test
-    public void theXPlayerTakesTheThirdTurn() {
-        turn = turn.next();
-        turn = turn.next();
-        assertThat(turn.taker()).isSameAs(x);
+    public void xTakesTheThirdTurn() {
+        Turn secondTurn = firstTurn.next();
+        Turn thirdTurn = secondTurn.next();
+        assertThat(thirdTurn.taker()).isSameAs(x);
     }
 }
