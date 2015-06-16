@@ -6,11 +6,6 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TurnTest {
-    public static class PlayerDummy implements Player {
-        @Override
-        public void placeMark(Board board) {}
-    }
-
     Player x, o;
     Turn turn;
 
