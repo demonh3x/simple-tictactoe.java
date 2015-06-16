@@ -6,7 +6,11 @@ public class Board {
     private static final int SPACES_AMOUNT = 9;
     private Mark[] placedMarks;
 
-    public Board() {
+    public static Board empty() {
+        return new Board();
+    }
+
+    private Board() {
         placedMarks = new Mark[SPACES_AMOUNT];
     }
 
@@ -36,4 +40,5 @@ public class Board {
                 "placedMarks=" + Arrays.toString(placedMarks) +
                 '}';
     }
+
 }

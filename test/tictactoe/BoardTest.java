@@ -8,26 +8,26 @@ import static tictactoe.Mark.*;
 public class BoardTest {
     @Test
     public void twoEmptyBoardsAreEqual() {
-        Board emptyBoardA = new Board();
-        Board emptyBoardB = new Board();
+        Board emptyBoardA = Board.empty();
+        Board emptyBoardB = Board.empty();
 
         assertThat(emptyBoardA).isEqualTo(emptyBoardB);
     }
 
     @Test
-    public void aBoardWithOneMoveIsNotEqualToAnEmptyBoard() throws Exception {
-        Board boardWithOneMoveMore = new Board();
+    public void aBoardWithOneMarkIsNotEqualToAnEmptyBoard() throws Exception {
+        Board boardWithOneMoveMore = Board.empty();
         boardWithOneMoveMore.placeMarkAtSpace(X, 0);
 
-        Board emptyBoard = new Board();
+        Board emptyBoard = Board.empty();
 
         assertThat(boardWithOneMoveMore).isNotEqualTo(emptyBoard);
     }
 
     @Test
-    public void twoBoardsWithTheSameMovesAreEqual() throws Exception {
-        Board boardA = new Board();
-        Board boardB = new Board();
+    public void twoBoardsWithTheSameMarkAtTheSameSpaceAreEqual() throws Exception {
+        Board boardA = Board.empty();
+        Board boardB = Board.empty();
 
         boardA.placeMarkAtSpace(X, 0);
         boardB.placeMarkAtSpace(X, 0);

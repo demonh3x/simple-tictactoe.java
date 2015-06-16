@@ -17,7 +17,7 @@ public class GameTest {
         x = new PlayerStub(X);
         o = new PlayerStub(O);
         display = new DisplaySpy();
-        game = new Game(new Board(), display, new Turns(x, o));
+        game = new Game(Board.empty(), display, new Turns(x, o));
     }
 
     @Test
