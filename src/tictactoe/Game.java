@@ -12,11 +12,23 @@ public class Game {
     }
 
     public void start() {
-        display.updateBoard(board);
+        displayBoard();
     }
 
     public void step() {
-        turns.nextPlayer().placeMark(board);
+        giveTurn();
+        displayBoard();
+    }
+
+    private void giveTurn() {
+        nextPlayer().placeMark(board);
+    }
+
+    private Player nextPlayer() {
+        return turns.nextPlayer();
+    }
+
+    private void displayBoard() {
         display.updateBoard(board);
     }
 }

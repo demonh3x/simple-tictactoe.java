@@ -1,19 +1,23 @@
 package tictactoe;
 
 public class Turns {
-    private final Player x;
-    private final Player o;
+    private final Player first;
+    private final Player second;
     private Player next;
 
-    public Turns(Player x, Player o) {
-        this.x = x;
-        this.o = o;
-        this.next = x;
+    public Turns(Player first, Player second) {
+        this.first = first;
+        this.second = second;
+        this.next = first;
     }
 
     public Player nextPlayer() {
         Player current = next;
-        next = next == x? o : x;
+        advanceToNextPlayer();
         return current;
+    }
+
+    private void advanceToNextPlayer() {
+        next = next == first ? second : first;
     }
 }
