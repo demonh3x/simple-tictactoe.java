@@ -17,7 +17,7 @@ public class GameTest {
         x = new PlayerStub(X);
         o = new PlayerStub(O);
         display = new DisplaySpy();
-        game = new Game(Board.empty(), display, new Turns(x, o));
+        game = new Game(Board.empty(), display, new ActivePlayer(x, o));
     }
 
     @Test
@@ -40,7 +40,7 @@ public class GameTest {
     public void displaysTheXPlayerInTheFirstSpace() {
         x.willPlaceMarkAt(0);
 
-        game.step();
+        game.doTurn();
 
         assertDisplayed(
                 "x--" +
@@ -54,8 +54,8 @@ public class GameTest {
         x.willPlaceMarkAt(0);
         o.willPlaceMarkAt(1);
 
-        game.step();
-        game.step();
+        game.doTurn();
+        game.doTurn();
 
         assertDisplayed(
                 "xo-" +

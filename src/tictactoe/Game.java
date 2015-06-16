@@ -3,29 +3,26 @@ package tictactoe;
 public class Game {
     private Board board;
     private Display display;
-    private Turns turns;
+    private ActivePlayer activePlayer;
 
-    public Game(Board board, Display display, Turns turns) {
+    public Game(Board board, Display display, ActivePlayer activePlayer) {
         this.board = board;
         this.display = display;
-        this.turns = turns;
+        this.activePlayer = activePlayer;
     }
 
     public void start() {
         displayBoard();
     }
 
-    public void step() {
-        giveTurn();
+    public void doTurn() {
+        giveTurnToActivePlayer();
         displayBoard();
     }
 
-    private void giveTurn() {
-        nextPlayer().placeMark(board);
-    }
-
-    private Player nextPlayer() {
-        return turns.nextPlayer();
+    private void giveTurnToActivePlayer() {
+        activePlayer.placeMark(board);
+        activePlayer.changeToNext();
     }
 
     private void displayBoard() {
