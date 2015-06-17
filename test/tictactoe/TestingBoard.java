@@ -3,14 +3,14 @@ package tictactoe;
 import static org.assertj.core.api.Assertions.assertThat;
 import static tictactoe.Mark.*;
 
-public class BoardAssertions {
+public class TestingBoard {
     public static final char EMPTY_SPACE = '-';
 
     public static void assertBoardContainsMarks(Board actualBoard, String expectedMarks) {
         assertThat(actualBoard.marks()).isEqualTo(createBoardWithMarks(expectedMarks).marks());
     }
 
-    private static Board createBoardWithMarks(String marks) {
+    public static Board createBoardWithMarks(String marks) {
         Board board = Board.empty();
 
         for (int space = 0; space < marks.length(); space++) {

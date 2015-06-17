@@ -1,14 +1,10 @@
 package tictactoe;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static tictactoe.Mark.*;
 
 public class Board {
-    private List<Mark> placedMarks;
-
     public static Board empty() {
         return new Board(Arrays.asList(
                 NONE, NONE, NONE,
@@ -17,8 +13,14 @@ public class Board {
         ));
     }
 
+    private final List<Mark> placedMarks;
+
     private Board(List<Mark> placedMarks) {
         this.placedMarks = placedMarks;
+    }
+
+    public List<Mark> marks() {
+        return placedMarks;
     }
 
     public Board withMarkAtSpace(Mark mark, int atSpace) {
@@ -27,7 +29,22 @@ public class Board {
         return new Board(marks);
     }
 
-    public List<Mark> marks() {
-        return placedMarks;
+    public Set<Line> lines() {
+        return new HashSet<Line>() {{
+            add(lineAtSpaces(0, 1, 2));
+            add(lineAtSpaces(3, 4, 5));
+            add(lineAtSpaces(6, 7, 8));
+
+            add(lineAtSpaces(0, 3, 6));
+            add(lineAtSpaces(1, 4, 7));
+            add(lineAtSpaces(2, 5, 8));
+
+            add(lineAtSpaces(0, 4, 8));
+            add(lineAtSpaces(2, 4, 6));
+        }};
+    }
+
+    private Line lineAtSpaces(int... atSpaces) {
+        return new Line(placedMarks, atSpaces);
     }
 }

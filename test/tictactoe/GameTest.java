@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static tictactoe.BoardAssertions.*;
+import static tictactoe.TestingBoard.*;
 import static tictactoe.Mark.*;
 
 public class GameTest {
