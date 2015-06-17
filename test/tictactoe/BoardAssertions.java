@@ -7,7 +7,7 @@ public class BoardAssertions {
     public static final char EMPTY_SPACE = '-';
 
     public static void assertBoardContainsMarks(Board actualBoard, String expectedMarks) {
-        assertThat(actualBoard).isEqualTo(createBoardWithMarks(expectedMarks));
+        assertThat(actualBoard.marks()).isEqualTo(createBoardWithMarks(expectedMarks).marks());
     }
 
     private static Board createBoardWithMarks(String marks) {
