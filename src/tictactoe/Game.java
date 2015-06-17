@@ -22,6 +22,10 @@ public class Game {
         displayBoard();
     }
 
+    public boolean isOngoing() {
+        return !currentBoard.isFinished();
+    }
+
     private void displayBoard() {
         display.updateBoard(currentBoard);
     }

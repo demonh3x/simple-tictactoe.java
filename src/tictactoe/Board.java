@@ -47,4 +47,24 @@ public class Board {
     private Line lineAtSpaces(int... atSpaces) {
         return new Line(placedMarks, atSpaces);
     }
+
+    public Mark getWinner() {
+        for (Line line : lines())
+            if (line.isFullyOccupiedBySameMark())
+                return line.firstMark();
+
+        return NONE;
+    }
+
+    public boolean isFinished() {
+        return hasAWinner() || isFull();
+    }
+
+    private boolean hasAWinner() {
+        return getWinner() != NONE;
+    }
+
+    private boolean isFull() {
+        return !placedMarks.contains(NONE);
+    }
 }

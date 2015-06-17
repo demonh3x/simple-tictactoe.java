@@ -9,6 +9,7 @@ import static tictactoe.Mark.*;
 
 public class GameTest {
     PlayerStub x, o;
+    Turn turn;
     DisplaySpy display;
     Game game;
 
@@ -16,13 +17,14 @@ public class GameTest {
     public void setUp() {
         x = new PlayerStub(X);
         o = new PlayerStub(O);
+        turn = Turn.firstOf(x, o);
         display = new DisplaySpy();
-        game = new Game(display, Turn.firstOf(x, o), Board.empty());
+        game = new Game(display, turn, Board.empty());
     }
 
     @Test
     public void beforeStartingDoesNotDisplayTheBoard() {
-        assertThat(display.isDisplayingABoard).isFalse();
+        assertThat(display.hasUpdateBoardBeenCalled()).isFalse();
     }
 
     @Test
@@ -30,7 +32,7 @@ public class GameTest {
         game.start();
 
         assertBoardContainsMarks(
-                display.board,
+                display.displayedBoard(),
                 "---" +
                 "---" +
                 "---"
@@ -40,11 +42,10 @@ public class GameTest {
     @Test
     public void displaysTheXPlayerInTheFirstSpace() {
         x.willPlaceMarkAt(0);
-
         game.doTurn();
 
         assertBoardContainsMarks(
-                display.board,
+                display.displayedBoard(),
                 "x--" +
                 "---" +
                 "---"
@@ -55,15 +56,37 @@ public class GameTest {
     public void displaysTheOPlayerInTheSecondSpace() {
         x.willPlaceMarkAt(0);
         o.willPlaceMarkAt(1);
-
-        game.doTurn();
-        game.doTurn();
+        doTurns(2);
 
         assertBoardContainsMarks(
-                display.board,
+                display.displayedBoard(),
                 "xo-" +
                 "---" +
                 "---"
         );
+    }
+
+    @Test
+    public void isOngoingBeforeAPlayerHasALine() {
+        x.willPlaceMarkAt(0, 1);
+        o.willPlaceMarkAt(3, 4);
+        doTurns(4);
+
+        assertThat(game.isOngoing()).isTrue();
+    }
+
+    @Test
+    public void isNotOngoingWhenXPlayerHasALine() {
+        x.willPlaceMarkAt(0, 1, 2);
+        o.willPlaceMarkAt(3, 4);
+        doTurns(5);
+
+        assertThat(game.isOngoing()).isFalse();
+    }
+
+    private void doTurns(int amountOfTurns) {
+        for (int turnIndex = 0; turnIndex < amountOfTurns; turnIndex++) {
+            game.doTurn();
+        }
     }
 }

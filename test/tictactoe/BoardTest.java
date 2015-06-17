@@ -64,6 +64,54 @@ public class BoardTest {
         );
     }
 
+    @Test
+    public void aFullBoardIsFinishedAndWonByNoOne() {
+        Board fullBoard = createBoardWithMarks(
+                "xxo" +
+                "oox" +
+                "xxo"
+        );
+
+        assertThat(fullBoard.isFinished()).isTrue();
+        assertThat(fullBoard.getWinner()).isEqualTo(NONE);
+    }
+
+    @Test
+    public void anAlmostFullBoardIsNotFinishedAndWonByNoOne() {
+        Board almostFullBoard = createBoardWithMarks(
+                "-xo" +
+                "oox" +
+                "xxo"
+        );
+
+        assertThat(almostFullBoard.isFinished()).isFalse();
+        assertThat(almostFullBoard.getWinner()).isEqualTo(NONE);
+    }
+
+    @Test
+    public void aBoardWithALineOccupiedByXIsFinishedAndWonByX() {
+        Board boardWithXLine = createBoardWithMarks(
+                "xxx" +
+                "oo-" +
+                "---"
+        );
+
+        assertThat(boardWithXLine.isFinished()).isTrue();
+        assertThat(boardWithXLine.getWinner()).isEqualTo(X);
+    }
+
+    @Test
+    public void aBoardWithALineOccupiedByOIsFinishedAndWonByO() {
+        Board boardWithXLine = createBoardWithMarks(
+                "xx-" +
+                "ooo" +
+                "x--"
+        );
+
+        assertThat(boardWithXLine.isFinished()).isTrue();
+        assertThat(boardWithXLine.getWinner()).isEqualTo(O);
+    }
+
     private void assertBoardHasLines(String boardMarks, Set<List<Mark>> expectedLines) {
         Board board = createBoardWithMarks(boardMarks);
         assertThat((Set<? extends List<Mark>>) board.lines()).isEqualTo(expectedLines);

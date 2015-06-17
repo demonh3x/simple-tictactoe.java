@@ -1,7 +1,6 @@
 package tictactoe;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class PlayerStub implements Player {
     private Mark mark;
@@ -21,7 +20,7 @@ public class PlayerStub implements Player {
         return spacesToPlaceMarks.poll();
     }
 
-    public void willPlaceMarkAt(int space) {
-        spacesToPlaceMarks.add(space);
+    public void willPlaceMarkAt(Integer... spaces) {
+        Collections.addAll(spacesToPlaceMarks, spaces);
     }
 }
