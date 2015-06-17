@@ -29,7 +29,19 @@ public class Board {
         return new Board(marks);
     }
 
-    public Set<Line> lines() {
+    public Mark getWinner() {
+        for (Line line : lines())
+            if (line.isFullyOccupiedBySameMark())
+                return line.firstMark();
+
+        return NONE;
+    }
+
+    public boolean isFinished() {
+        return hasAWinner() || isFull();
+    }
+
+    private Set<Line> lines() {
         return new HashSet<Line>() {{
             add(lineAtSpaces(0, 1, 2));
             add(lineAtSpaces(3, 4, 5));
@@ -46,18 +58,6 @@ public class Board {
 
     private Line lineAtSpaces(int... atSpaces) {
         return new Line(placedMarks, atSpaces);
-    }
-
-    public Mark getWinner() {
-        for (Line line : lines())
-            if (line.isFullyOccupiedBySameMark())
-                return line.firstMark();
-
-        return NONE;
-    }
-
-    public boolean isFinished() {
-        return hasAWinner() || isFull();
     }
 
     private boolean hasAWinner() {

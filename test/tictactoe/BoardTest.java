@@ -3,9 +3,6 @@ package tictactoe;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tictactoe.Mark.*;
@@ -41,27 +38,6 @@ public class BoardTest {
                 NONE, NONE, NONE,
                 NONE, NONE, NONE
         ));
-    }
-
-    @Test
-    public void hasLines() {
-        assertBoardHasLines(
-                "o-x" +
-                "ox-" +
-                "-x-",
-                lines(
-                    line(O, NONE, X),
-                    line(O, X, NONE),
-                    line(NONE, X, NONE),
-
-                    line(O, O, NONE),
-                    line(NONE, X, X),
-                    line(X, NONE, NONE),
-
-                    line(O, X, NONE),
-                    line(X, X, NONE)
-                )
-        );
     }
 
     @Test
@@ -110,20 +86,5 @@ public class BoardTest {
 
         assertThat(boardWithXLine.isFinished()).isTrue();
         assertThat(boardWithXLine.getWinner()).isEqualTo(O);
-    }
-
-    private void assertBoardHasLines(String boardMarks, Set<List<Mark>> expectedLines) {
-        Board board = createBoardWithMarks(boardMarks);
-        assertThat((Set<? extends List<Mark>>) board.lines()).isEqualTo(expectedLines);
-    }
-
-    private Set<List<Mark>> lines(final List<Mark>... lines) {
-        return new HashSet<List<Mark>>() {{
-            addAll(Arrays.asList(lines));
-        }};
-    }
-
-    private List<Mark> line(Mark first, Mark second, Mark third) {
-        return Arrays.asList(first, second, third);
     }
 }
