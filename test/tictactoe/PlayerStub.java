@@ -13,8 +13,8 @@ public class PlayerStub implements Player {
     }
 
     @Override
-    public void placeMark(Board board) {
-        board.placeMarkAtSpace(mark, chosenSpace());
+    public Board placeMark(Board board) {
+        return board.withMarkAtSpace(mark, chosenSpace());
     }
 
     private Integer chosenSpace() {

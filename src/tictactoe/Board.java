@@ -21,10 +21,6 @@ public class Board {
         this.placedMarks = placedMarks;
     }
 
-    public void placeMarkAtSpace(Mark mark, int atSpace) {
-        placedMarks.set(atSpace, mark);
-    }
-
     public Board withMarkAtSpace(Mark mark, int atSpace) {
         List<Mark> marks = new ArrayList<>(placedMarks);
         marks.set(atSpace, mark);

@@ -1,6 +1,10 @@
 package tictactoe;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 public class PlayerDummy implements Player {
     @Override
-    public void placeMark(Board board) {}
+    public Board placeMark(Board board) {
+        throw new NotImplementedException();
+    }
 }

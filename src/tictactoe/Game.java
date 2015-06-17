@@ -3,12 +3,12 @@ package tictactoe;
 public class Game {
     private final Display display;
     private Turn currentTurn;
-    private final Board board;
+    private Board currentBoard;
 
     public Game(Display display, Turn initialTurn, Board initialBoard) {
         this.display = display;
         this.currentTurn = initialTurn;
-        this.board = initialBoard;
+        this.currentBoard = initialBoard;
     }
 
     public void start() {
@@ -23,11 +23,11 @@ public class Game {
     }
 
     private void displayBoard() {
-        display.updateBoard(board);
+        display.updateBoard(currentBoard);
     }
 
     private void letPlay(Player player) {
-        player.placeMark(board);
+        currentBoard = player.placeMark(currentBoard);
     }
 
     private Player currentPlayer() {

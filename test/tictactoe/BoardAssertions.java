@@ -16,7 +16,7 @@ public class BoardAssertions {
         for (int space = 0; space < marks.length(); space++) {
             char symbol = marks.charAt(space);
             if (symbol != EMPTY_SPACE)
-                board.placeMarkAtSpace(markFrom(symbol), space);
+                board = board.withMarkAtSpace(markFrom(symbol), space);
         }
 
         return board;
