@@ -19,6 +19,14 @@ public class BoardTest {
     }
 
     @Test
+    public void anEmptyBoardHasAllSpacesAvailable() {
+        Board emptyBoard = Board.empty();
+        assertThat(emptyBoard.availableSpaces()).isEqualTo(Arrays.asList(
+                0, 1, 2, 3, 4, 5, 6, 7, 8
+        ));
+    }
+
+    @Test
     public void aBoardWithXMarkAtFirstSpace() {
         Board board = Board.empty().withMarkAtSpace(X, 0);
         assertThat(board.marks()).isEqualTo(Arrays.asList(
@@ -26,6 +34,16 @@ public class BoardTest {
                 NONE, NONE, NONE,
                 NONE, NONE, NONE
         ));
+    }
+
+    @Test
+    public void aBoardWithSomeMarksHasTheRemainingSpacesAvailable() {
+        Board board = new Board(Arrays.asList(
+                X,    O,    NONE,
+                O,    X,    O,
+                NONE, X,    O
+        ));
+        assertThat(board.availableSpaces()).isEqualTo(Arrays.asList(2, 6));
     }
 
     @Test (expected = UnsupportedOperationException.class)

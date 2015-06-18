@@ -23,10 +23,20 @@ public class Board {
         return placedMarks;
     }
 
-    public Board withMarkAtSpace(Mark mark, int atSpace) {
+    public Board withMarkAtSpace(Mark mark, Integer atSpace) {
         List<Mark> marks = new ArrayList<>(placedMarks);
         marks.set(atSpace, mark);
         return new Board(marks);
+    }
+
+    public List<Integer> availableSpaces() {
+        List<Integer> availableSpaces = new ArrayList<>();
+
+        for (int space = 0; space < placedMarks.size(); space++)
+            if (placedMarks.get(space) == NONE)
+                availableSpaces.add(space);
+
+        return availableSpaces;
     }
 
     public Mark getWinner() {
