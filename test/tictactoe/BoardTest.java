@@ -40,50 +40,118 @@ public class BoardTest {
     }
 
     @Test
-    public void aFullBoardIsFinishedAndWonByNoOne() {
+    public void aFullBoardWithNoMarkFullyOccupyingALineIsADraw() {
         Board fullBoard = new Board(Arrays.asList(
                 X, X, O,
                 O, O, X,
                 X, X, O
         ));
 
-        assertThat(fullBoard.isFinished()).isTrue();
-        assertThat(fullBoard.getWinner()).isEqualTo(NONE);
+        assertIsADraw(fullBoard);
     }
 
     @Test
-    public void anAlmostFullBoardIsNotFinishedAndWonByNoOne() {
+    public void anAlmostFullBoardWithNoMarkFullyOccupyingALineIsOngoing() {
         Board almostFullBoard = new Board(Arrays.asList(
                 NONE, X,    O,
                 O,    O,    X,
                 X,    X,    O
         ));
 
-        assertThat(almostFullBoard.isFinished()).isFalse();
-        assertThat(almostFullBoard.getWinner()).isEqualTo(NONE);
+        assertOngoing(almostFullBoard);
     }
 
     @Test
-    public void aBoardWithALineOccupiedByXIsFinishedAndWonByX() {
-        Board boardWithXLine = new Board(Arrays.asList(
-                X,    X,    X,
-                O,    O,    NONE,
-                NONE, NONE, NONE
-        ));
-
-        assertThat(boardWithXLine.isFinished()).isTrue();
-        assertThat(boardWithXLine.getWinner()).isEqualTo(X);
-    }
-
-    @Test
-    public void aBoardWithALineOccupiedByOIsFinishedAndWonByO() {
+    public void aBoardWithTheOMarkFullyOccupyingALineIsWonByO() {
         Board boardWithOLine = new Board(Arrays.asList(
                 X,    X,    NONE,
                 O,    O,    O,
                 X,    NONE, NONE
         ));
 
-        assertThat(boardWithOLine.isFinished()).isTrue();
-        assertThat(boardWithOLine.getWinner()).isEqualTo(O);
+        assertWonBy(O, boardWithOLine);
+    }
+
+    @Test
+    public void aBoardWithTheXMarkFullyOccupyingALineIsWonByX() {
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        X,    X,    X,
+                        O,    O,    NONE,
+                        NONE, NONE, NONE
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        O,    O,    NONE,
+                        X,    X,    X,
+                        NONE, NONE, NONE
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        O,    O,    NONE,
+                        NONE, NONE, NONE,
+                        X,    X,    X
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        X,    O,    O,
+                        X,    NONE, NONE,
+                        X,    NONE, NONE
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        O,    X,    O,
+                        NONE, X,    NONE,
+                        NONE, X,    NONE
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        O,    O,    X,
+                        NONE, NONE, X,
+                        NONE, NONE, X
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        X,    O,    O,
+                        NONE, X,    NONE,
+                        NONE, NONE, X
+                ))
+        );
+        assertWonBy(
+                X,
+                new Board(Arrays.asList(
+                        NONE, NONE, X,
+                        NONE, X,    O,
+                        X,    NONE, O
+                ))
+        );
+    }
+
+    private void assertIsADraw(Board board) {
+        assertThat(board.isFinished()).isTrue();
+        assertThat(board.getWinner()).isEqualTo(NONE);
+    }
+
+    private void assertOngoing(Board board) {
+        assertThat(board.isFinished()).isFalse();
+        assertThat(board.getWinner()).isEqualTo(NONE);
+    }
+
+    private void assertWonBy(Mark winner, Board board) {
+        assertThat(board.isFinished()).isTrue();
+        assertThat(board.getWinner()).isEqualTo(winner);
     }
 }
