@@ -19,7 +19,8 @@ public class CliDisplayTest {
                 )),
                 "---\n" +
                 "---\n" +
-                "---\n"
+                "---\n" +
+                "\n"
         );
     }
 
@@ -33,7 +34,8 @@ public class CliDisplayTest {
                 )),
                 "x-x\n" +
                 "-o-\n" +
-                "-o-\n"
+                "-o-\n" +
+                "\n"
         );
     }
 
@@ -48,6 +50,7 @@ public class CliDisplayTest {
                 "xxx\n" +
                 "-o-\n" +
                 "-o-\n" +
+                "\n" +
                 "Player x has won!\n"
         );
     }
@@ -63,6 +66,7 @@ public class CliDisplayTest {
                 "xox\n" +
                 "xo-\n" +
                 "-o-\n" +
+                "\n" +
                 "Player o has won!\n"
         );
     }
@@ -78,6 +82,7 @@ public class CliDisplayTest {
                 "xxo\n" +
                 "oox\n" +
                 "xox\n" +
+                "\n" +
                 "It is a draw!\n"
         );
     }

@@ -17,7 +17,7 @@ public class CliDisplay implements Display {
     }
 
     private void printBoard(Board board) {
-        out.print(representationOf(board));
+        out.println(representationOf(board));
     }
 
     private void printResult(Board board) {
