@@ -68,11 +68,11 @@ public class HumanPlayerTest {
         String outputText = getOutputAfterPlayingWithInput(board, X, "9\n0\nfoo\n2\n");
         assertThat(outputText).isEqualTo(
                 "Choose space: [2, 3, 4, 5, 6]\n" +
-                "9 is not an available space!\n" +
+                "Sorry, that is not possible. Please try again.\n" +
                 "Choose space: [2, 3, 4, 5, 6]\n" +
-                "0 is not an available space!\n" +
+                "Sorry, that is not possible. Please try again.\n" +
                 "Choose space: [2, 3, 4, 5, 6]\n" +
-                "foo is not an available space!\n" +
+                "Sorry, that is not possible. Please try again.\n" +
                 "Choose space: [2, 3, 4, 5, 6]\n"
         );
     }
