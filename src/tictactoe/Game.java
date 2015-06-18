@@ -1,6 +1,6 @@
 package tictactoe;
 
-public class Game {
+public class Game implements GameLoop {
     private final Display display;
     private Turn currentTurn;
     private Board currentBoard;
