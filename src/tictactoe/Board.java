@@ -16,7 +16,7 @@ public class Board {
     private final List<Mark> placedMarks;
 
     public Board(List<Mark> placedMarks) {
-        this.placedMarks = placedMarks;
+        this.placedMarks = Collections.unmodifiableList(placedMarks);
     }
 
     public List<Mark> marks() {

@@ -28,6 +28,12 @@ public class BoardTest {
         ));
     }
 
+    @Test (expected = UnsupportedOperationException.class)
+    public void theMarksOfABoardCannotBeTampered() {
+        Board board = Board.empty();
+        board.marks().set(0, X);
+    }
+
     @Test
     public void addingAMarkDoesNotChangeTheFactThatTheBoardDidNotContainItBefore() {
         Board previousBoard = Board.empty();
