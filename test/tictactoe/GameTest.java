@@ -33,9 +33,9 @@ public class GameTest {
 
         assertBoardContainsMarks(
                 display.displayedBoard(),
-                "---" +
-                "---" +
-                "---"
+                NONE, NONE, NONE,
+                NONE, NONE, NONE,
+                NONE, NONE, NONE
         );
     }
 
@@ -46,9 +46,9 @@ public class GameTest {
 
         assertBoardContainsMarks(
                 display.displayedBoard(),
-                "x--" +
-                "---" +
-                "---"
+                X,    NONE, NONE,
+                NONE, NONE, NONE,
+                NONE, NONE, NONE
         );
     }
 
@@ -60,9 +60,9 @@ public class GameTest {
 
         assertBoardContainsMarks(
                 display.displayedBoard(),
-                "xo-" +
-                "---" +
-                "---"
+                X,    O,    NONE,
+                NONE, NONE, NONE,
+                NONE, NONE, NONE
         );
     }
 

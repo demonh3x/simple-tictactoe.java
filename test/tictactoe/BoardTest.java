@@ -6,7 +6,6 @@ import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static tictactoe.Mark.*;
-import static tictactoe.TestingBoard.*;
 
 public class BoardTest {
     @Test
@@ -42,11 +41,11 @@ public class BoardTest {
 
     @Test
     public void aFullBoardIsFinishedAndWonByNoOne() {
-        Board fullBoard = createBoardWithMarks(
-                "xxo" +
-                "oox" +
-                "xxo"
-        );
+        Board fullBoard = new Board(Arrays.asList(
+                X, X, O,
+                O, O, X,
+                X, X, O
+        ));
 
         assertThat(fullBoard.isFinished()).isTrue();
         assertThat(fullBoard.getWinner()).isEqualTo(NONE);
@@ -54,11 +53,11 @@ public class BoardTest {
 
     @Test
     public void anAlmostFullBoardIsNotFinishedAndWonByNoOne() {
-        Board almostFullBoard = createBoardWithMarks(
-                "-xo" +
-                "oox" +
-                "xxo"
-        );
+        Board almostFullBoard = new Board(Arrays.asList(
+                NONE, X,    O,
+                O,    O,    X,
+                X,    X,    O
+        ));
 
         assertThat(almostFullBoard.isFinished()).isFalse();
         assertThat(almostFullBoard.getWinner()).isEqualTo(NONE);
@@ -66,11 +65,11 @@ public class BoardTest {
 
     @Test
     public void aBoardWithALineOccupiedByXIsFinishedAndWonByX() {
-        Board boardWithXLine = createBoardWithMarks(
-                "xxx" +
-                "oo-" +
-                "---"
-        );
+        Board boardWithXLine = new Board(Arrays.asList(
+                X,    X,    X,
+                O,    O,    NONE,
+                NONE, NONE, NONE
+        ));
 
         assertThat(boardWithXLine.isFinished()).isTrue();
         assertThat(boardWithXLine.getWinner()).isEqualTo(X);
@@ -78,13 +77,13 @@ public class BoardTest {
 
     @Test
     public void aBoardWithALineOccupiedByOIsFinishedAndWonByO() {
-        Board boardWithXLine = createBoardWithMarks(
-                "xx-" +
-                "ooo" +
-                "x--"
-        );
+        Board boardWithOLine = new Board(Arrays.asList(
+                X,    X,    NONE,
+                O,    O,    O,
+                X,    NONE, NONE
+        ));
 
-        assertThat(boardWithXLine.isFinished()).isTrue();
-        assertThat(boardWithXLine.getWinner()).isEqualTo(O);
+        assertThat(boardWithOLine.isFinished()).isTrue();
+        assertThat(boardWithOLine.getWinner()).isEqualTo(O);
     }
 }

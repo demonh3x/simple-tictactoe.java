@@ -15,7 +15,7 @@ public class Board {
 
     private final List<Mark> placedMarks;
 
-    private Board(List<Mark> placedMarks) {
+    public Board(List<Mark> placedMarks) {
         this.placedMarks = placedMarks;
     }
 
