@@ -18,52 +18,33 @@ public class HumanPlayer implements Player {
     }
 
     public Board placeMark(Board currentBoard) {
-        int selectedSpace = askForAvailableSpaceIn(currentBoard);
-        return currentBoard.withMarkAtSpace(mark, selectedSpace);
-    }
-
-    private int askForAvailableSpaceIn(Board currentBoard) {
         List<Integer> availableSpaces = currentBoard.availableSpaces();
-        int userSelectedSpace = askForValidSpaceDisplaying(availableSpaces);
 
-        while (!isAvailable(userSelectedSpace, currentBoard)) {
-            showNotAvailableMessage(userSelectedSpace);
-            userSelectedSpace = askForValidSpaceDisplaying(availableSpaces);
+        while (true) {
+            try {
+                showChooseSpaceMessage(availableSpaces);
+                int space = askForASpace();
+                if (isAvailable(space, availableSpaces))
+                    return currentBoard.withMarkAtSpace(mark, space);
+            } catch (Exception invalidUserInput) {}
+
+            showNotPossibleMessage();
         }
-
-        return userSelectedSpace;
     }
 
-    private boolean isAvailable(int space, Board inBoard) {
-        return inBoard.availableSpaces().contains(space);
+    private boolean isAvailable(int space, List<Integer> availableSpaces) {
+        return availableSpaces.contains(space);
     }
 
-    private int askForValidSpaceDisplaying(List<Integer> availableSpaces) {
-        String userInput = askForUserInputDisplaying(availableSpaces);
-
-        while (!isANumber(userInput)) {
-            showNotAvailableMessage(userInput);
-            userInput = askForUserInputDisplaying(availableSpaces);
-        }
-
-        return Integer.parseInt(userInput);
+    private int askForASpace() {
+        return Integer.parseInt(in.nextLine());
     }
 
-    private boolean isANumber(String userInput) {
-        try {
-            Integer.parseInt(userInput);
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return true;
-    }
-
-    private String askForUserInputDisplaying(List<Integer> availableSpaces) {
+    private void showChooseSpaceMessage(List<Integer> availableSpaces) {
         out.println("Choose space: " + availableSpaces.toString());
-        return in.nextLine();
     }
 
-    private void showNotAvailableMessage(Object userInput) {
-        out.println(userInput.toString() + " is not an available space!");
+    private void showNotPossibleMessage() {
+        out.println("Sorry, that is not possible. Please try again.");
     }
 }
