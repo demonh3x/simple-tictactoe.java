@@ -22,7 +22,7 @@ public class CliDisplay implements Display {
 
     private void printResult(Board board) {
         if (board.isFinished())
-            out.print(resultTextFor(board));
+            out.println(resultTextFor(board));
     }
 
     private String representationOf(Board board) {
@@ -43,6 +43,6 @@ public class CliDisplay implements Display {
     }
 
     private String resultTextFor(Board board) {
-        return board.getWinner().getResultMessage() + "\n";
+        return board.getWinner().getResultMessage();
     }
 }
