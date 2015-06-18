@@ -3,8 +3,9 @@ package tictactoe;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static tictactoe.TestingBoard.*;
 import static tictactoe.Mark.*;
 
 public class GameTest {
@@ -88,5 +89,9 @@ public class GameTest {
         for (int turnIndex = 0; turnIndex < amountOfTurns; turnIndex++) {
             game.doTurn();
         }
+    }
+
+    private static void assertBoardContainsMarks(Board actualBoard, Mark... expectedMarks) {
+        assertThat(actualBoard.marks()).isEqualTo(new Board(Arrays.asList(expectedMarks)).marks());
     }
 }
